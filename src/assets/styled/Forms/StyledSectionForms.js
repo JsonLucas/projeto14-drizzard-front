@@ -45,15 +45,18 @@ export const MainForm = styled.form`
 
 export const Fields = styled.input`
     width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
     height: 45px;
-    margin: 10px;
+    margin: 5px;
     border: 1px solid #0b0d12;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 21px;
     ${({isButton}) => isButton 
     ?  `font-family: 'Raleway', sans-serif;
         background-color: #48b9ff;
-        color: #FFFFFF;`
+        color: #FFFFFF;
+        cursor: pointer;`
     : ''}
 `;
 
@@ -61,4 +64,6 @@ export const HomeLink = styled.h3`
     font-family: 'Raleway', sans-serif;
     color: #FFFFFF;
     text-decoration: none;
+    cursor: pointer;
+    margin-top: 20px;
 `;

@@ -47,12 +47,12 @@ export default function Login(){
             <StyledForm>
                 <TitlePage>Drizzard</TitlePage>
                 <MainForm className='loginForm' onSubmit={loading?()=>{}:requestLogin}>
-                    <Fields type="email" placeholder='email'id='email' value={email} onChange={(e)=>setEmail(e.target.value)} disabled={loading}/>
-                    <Fields type="password" placeholder='senha' id='senha' value={senha} onChange={(e)=>setSenha(e.target.value)} disabled={loading}/>
+                    <Fields type="email" placeholder='Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} disabled={loading}/>
+                    <Fields type="password" placeholder='Senha' id='senha' value={senha} onChange={(e)=>setSenha(e.target.value)} disabled={loading}/>
                     <Fields isButton={true} type="submit" value='Entrar' id='sendLogin' disabled={loading}/>
                 </MainForm> 
                 
-                <Link to={`/cadastro`}>
+                <Link to={`/signup`}>
                    <HomeLink>Primeira vez? Cadastre-se!</HomeLink>
                 </Link>
             </StyledForm>
