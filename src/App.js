@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
+import LoadingContext from "./contexts/LoadingContext";
+import UserContext from "./contexts/UserContext";
+
+import Login from "./components/Login/Login";
+
+import "./assets/css/reset.css";
+import "./assets/css/fonts.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [loading,setLoading] = useState(false);
+  const [user, setUser] = useState(null);
+
+  return(
+    <LoadingContext.Provider value={{loading,setLoading}}>
+      <UserContext.Provider value={{user, setUser}}>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Login/>}/>
+                <Route path="/cadastro" element={<></>}/>
+                <Route path="" element={<></>}/>
+                <Route path="" element={<></>}/>  
+                <Route path="" element={<></>}/>
+            </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
+    </LoadingContext.Provider>  
+  )
 }
 
 export default App;
