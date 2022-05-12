@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   const [loading,setLoading] = useState(false);
@@ -18,11 +19,11 @@ function App() {
       <UserContext.Provider value={{user, setUser}}>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login/>}/>
-                <Route path="/cadastro" element={<></>}/>
-                <Route path="" element={<></>}/>
-                <Route path="" element={<></>}/>  
-                <Route path="" element={<></>}/>
+              <Route exact path="/" element={<Login/>}/>
+              <Route path="/signup" element={<SignUp />}/>
+              <Route path="" element={<></>}/>
+              <Route path="" element={<></>}/>  
+              <Route path="" element={<></>}/>
             </Routes>
         </BrowserRouter>
       </UserContext.Provider>
