@@ -19,7 +19,7 @@ export default function Login(){
         setLoading(true);
         
         const promise = axios.post(
-            "http://localhost:5000/login",
+            "https://drizzard.herokuapp.com/login",
              {
                 email: email,
                 password: senha
@@ -28,7 +28,7 @@ export default function Login(){
         promise.then((response)=>{
             setUser(response.data.username);
             setLoading(false);
-            navigate("/registros");    
+            navigate("/home");    
         });
         promise.catch((error)=>{
             console.log(error.response)
