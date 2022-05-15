@@ -6,6 +6,7 @@ import UserContext from "./contexts/UserContext";
 
 import Login from "./components/Login/Login";
 import Checkout from "./components/Checkout/Checkout";
+import SignUp from "./components/SignUp/SignUp";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
@@ -20,7 +21,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login/>}/>
-                <Route path="/cadastro" element={<></>}/>
+                <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/home" element={<></>}/>  
                 <Route path="" element={<></>}/>
