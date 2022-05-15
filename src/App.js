@@ -5,10 +5,11 @@ import LoadingContext from "./contexts/LoadingContext";
 import UserContext from "./contexts/UserContext";
 
 import Login from "./components/Login/Login";
+import Checkout from "./components/Checkout/Checkout";
+import SignUp from "./components/SignUp/SignUp";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
-import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   const [loading,setLoading] = useState(false);
@@ -19,11 +20,11 @@ function App() {
       <UserContext.Provider value={{user, setUser}}>
         <BrowserRouter>
             <Routes>
-              <Route exact path="/" element={<Login/>}/>
-              <Route path="/signup" element={<SignUp />}/>
-              <Route path="" element={<></>}/>
-              <Route path="" element={<></>}/>  
-              <Route path="" element={<></>}/>
+                <Route path="/" element={<Login/>}/>
+                <Route path="/signup" element={<SignUp/>}/>
+                <Route path="/checkout" element={<Checkout/>}/>
+                <Route path="/home" element={<></>}/>  
+                <Route path="" element={<></>}/>
             </Routes>
         </BrowserRouter>
       </UserContext.Provider>
