@@ -125,6 +125,12 @@ const StyledForm=styled.div`
     flex-wrap: wrap;
     overflow-y: scroll;
     
+    ::-webkit-scrollbar{
+       display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
     h2{
         text-align: start;
         font-family: 'Raleway', sans-serif;
