@@ -118,12 +118,18 @@ const StyledCheckout=styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: start;
+    align-items: start; 
 `
 const StyledForm=styled.div`
     text-align: center;
     flex-wrap: wrap;
     overflow-y: scroll;
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     
     h2{
         text-align: start;
