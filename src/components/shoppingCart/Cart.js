@@ -8,7 +8,7 @@ import calcTotal from '../../utils/cartOperation.js';
 
 export default function Cart(){
     const navigate = useNavigate()
-    const selectedGames = JSON.parse(localStorage.getItem('cartData'));
+    const selectedGames = JSON.parse(localStorage.getItem('cartData')) || [];
     const orderPrice = calcTotal(selectedGames)
     return(
         <>
