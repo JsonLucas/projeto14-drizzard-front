@@ -4,77 +4,26 @@ import { useNavigate } from 'react-router-dom';
 
 import Topo from '../Topo.js';
 import CartGame from './CartGame.js';
+import calcTotal from '../../utils/cartOperation.js';
 
 export default function Cart(){
     const navigate = useNavigate()
-    const selectedGames = [{"_id":{"$oid":"627da0f664e21bdf0d3be273"},
-    "name":"Grand Theft Auto V",
-    "price":"19,15 R$",
-    "image":"https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-    "genres":["Action","Adventure"],
-    "stock":{"$numberInt":"60"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be275"},
-    "name":"Portal 2",
-    "price":"32,66 R$",
-    "image":"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-    "genres":["Shooter","Puzzle"],
-    "stock":{"$numberInt":"49"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be277"},
-    "name":"The Elder Scrolls V: Skyrim",
-    "price":"19,93 R$",
-    "image":"https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-    "genres":["Action","RPG"],
-    "stock":{"$numberInt":"42"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be273"},
-    "name":"Grand Theft Auto V",
-    "price":"19,15 R$",
-    "image":"https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-    "genres":["Action","Adventure"],
-    "stock":{"$numberInt":"60"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be275"},
-    "name":"Portal 2",
-    "price":"32,66 R$",
-    "image":"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-    "genres":["Shooter","Puzzle"],
-    "stock":{"$numberInt":"49"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be277"},
-    "name":"The Elder Scrolls V: Skyrim",
-    "price":"19,93 R$",
-    "image":"https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-    "genres":["Action","RPG"],
-    "stock":{"$numberInt":"42"}},{"_id":{"$oid":"627da0f664e21bdf0d3be273"},
-    "name":"Grand Theft Auto V",
-    "price":"19,15 R$",
-    "image":"https://media.rawg.io/media/games/456/456dea5e1c7e3cd07060c14e96612001.jpg",
-    "genres":["Action","Adventure"],
-    "stock":{"$numberInt":"60"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be275"},
-    "name":"Portal 2",
-    "price":"32,66 R$",
-    "image":"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-    "genres":["Shooter","Puzzle"],
-    "stock":{"$numberInt":"49"}},
-    {"_id":{"$oid":"627da0f664e21bdf0d3be277"},
-    "name":"The Elder Scrolls V: Skyrim",
-    "price":"19,93 R$",
-    "image":"https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-    "genres":["Action","RPG"],
-    "stock":{"$numberInt":"42"}}
-    ];
+    const selectedGames = JSON.parse(localStorage.getItem('cartData'));
+
     return(
         <>
         <Topo/>
         <StyledCart>
             {selectedGames?
             <StyledList>
-                {selectedGames.map(game=><CartGame image={game.image} name={game.name} price={game.price}/>)}
+                {selectedGames.map(game=><CartGame image={game.cartData.image} name={game.cartData.name} price={game.cartData.price}/>)}
             </StyledList>
             :<h2>Seu carrinho de compras está vazio</h2>}
         </StyledCart>
         <CartButton>
                 <div className='totalPrice'>
                     <h2>Total:</h2>
-                    <h2>X</h2>
+                    <h2>{calcTotal(selectedGames)}</h2>
                 </div>
                 <button className='proceed' onClick={()=>navigate('/checkout')}>
                         Continuar compra
