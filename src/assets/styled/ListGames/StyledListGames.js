@@ -36,8 +36,8 @@ export const ContainerGames = styled.div`
 
 export const SingleGame = styled.div`
     box-sizing: border-box;
-    width: 105px;
-    height: 220px;
+    width: 140px;
+    height: 250px;
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
