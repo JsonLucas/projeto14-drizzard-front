@@ -1,8 +1,8 @@
 import axiosConfig from "./axiosConfig";
 
-const getGames = async () => {
+const getSingleGame = async (headers) => {
     try{
-        const request = await axiosConfig.get('/games');
+        const request = await axiosConfig.get('/single-game', { headers });
         return request;
     }catch(e){
         console.log(e.message);
@@ -12,4 +12,4 @@ const getGames = async () => {
     }
 }
 
-export default getGames;
+export default getSingleGame;

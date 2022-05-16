@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Header = styled.header`
+export const HeaderPage = styled.header`
     box-sizing: border-box;
     padding: 10px;
     width: 100%;

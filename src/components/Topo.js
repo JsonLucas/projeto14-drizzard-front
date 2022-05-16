@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { ArrowUndoSharp } from 'react-ionicons'
 
@@ -9,7 +9,7 @@ export default function Topo(){
         <StyledHeader>
             <ArrowUndoSharp
                 className='backIcon'
-                onClick={()=>{navigate('/home')}}
+                onClick={()=>{navigate('/')}}
                 color={'#434343'} 
                 height="30px"
                 width="30px"
