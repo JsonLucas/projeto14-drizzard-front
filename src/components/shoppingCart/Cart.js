@@ -48,6 +48,7 @@ const StyledCart=styled.div`
     h2{
         font-family: 'Raleway', sans-serif;
         font-size: 14px;
+        color: #FFFFFF;
     }
 `
 const StyledList=styled.div`
