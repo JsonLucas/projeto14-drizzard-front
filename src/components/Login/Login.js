@@ -34,7 +34,7 @@ export default function Login(){
         promise.then((response)=>{
             setUser(response.data.username);
             setLoading(false);
-            navigate("/home");    
+            navigate("/");    
         });
         promise.catch((error)=>{
             console.log(error.response)
