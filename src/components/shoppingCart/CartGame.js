@@ -7,7 +7,7 @@ export default function CartGame(props){
             <img src={props.image}/>
             <div>
                 <h2>{props.name}</h2>
-                <h2>qtd: x</h2>
+                <h2>qtd: {props.qtde}</h2>
             </div>
             <h3>{props.price}</h3>
         </GameListed>    
