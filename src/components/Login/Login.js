@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
     Fields, 
@@ -20,6 +20,16 @@ export default function Login(){
     
     const navigate = useNavigate();
 
+    useEffect(() => {
+        try{
+            const activeSession = JSON.parse(localStorage.getItem('loginSession'));
+            if(activeSession){
+                navigate('/');
+            }
+        }catch(e){
+            console.log(e.message);
+        }
+    }, []);
     function requestLogin(event){
         event.preventDefault();
         setLoading(true);
@@ -32,6 +42,8 @@ export default function Login(){
             }
         );
         promise.then((response)=>{
+            const { token } = response.data;
+            localStorage.setItem('loginSession', JSON.stringify(token));
             setUser(response.data.username);
             setLoading(false);
             navigate("/");    

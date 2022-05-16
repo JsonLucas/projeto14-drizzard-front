@@ -9,10 +9,10 @@ import Checkout from "./components/Checkout/Checkout";
 import SignUp from "./components/SignUp/SignUp";
 import Cart from "./components/shoppingCart/Cart";
 import ListGames from "./components/ListGames/ListGames";
+import SingleGamePage from "./components/SingleGamePage/SingleGamePage";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
-import SingleGamePage from "./components/SingleGamePage/SingleGamePage";
 
 function App() {
   const [loading,setLoading] = useState(false);
