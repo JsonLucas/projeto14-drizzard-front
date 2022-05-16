@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Img } from "../../assets/styled/ListGames/StyledListGames";
+import { Link, useParams } from "react-router-dom";
+import { Img, Paragraph } from "../../assets/styled/ListGames/StyledListGames";
 import getSingleGame from "../../utils/singleGameDataRequest";
 import { 
     Container, 
@@ -53,26 +53,31 @@ export default function SingleGamePage(){
     return (
         <Fragment>
             <Header />
-            {!loaded && <p>Carregando. . .</p>}
-            {loaded && 
-                <Container key={data._id}>
-                    <ThumbnailGame>
-                        <Img src={`${data.image}`} />
-                    </ThumbnailGame>                    
-                    <ContainerGameData>
-                        <RowGameName>{data.name}</RowGameName>
-                        <RowGenres>
-                            <Genre isLabel={true}>Gêneros:</Genre> 
-                            {data.genres.map((item) => <Genre>{item}</Genre>)}
-                        </RowGenres>
-                        <RowAddCart onSubmit={addCart}>
-                            <LabelPrice>{data.price}</LabelPrice>
-                            <FieldAddCart type='number' placeholder='Qtde.' min={0} max={data.stock} 
-                            value={qtde} onChange={(e) => { setQtde(e.target.value) }} required />
-                            <FieldAddCart type='submit' value='Selecionar' />
-                        </RowAddCart>
-                    </ContainerGameData>
-                </Container>}
+            <Container>
+                {!loaded && <Paragraph>Carregando. . .</Paragraph>}
+                {loaded && 
+                    <Fragment>
+                        <ThumbnailGame>
+                            <Img src={`${data.image}`} />
+                        </ThumbnailGame>                    
+                        <ContainerGameData>
+                            <RowGameName>{data.name}</RowGameName>
+                            <RowGenres>
+                                <Genre isLabel={true}>Gêneros:</Genre> 
+                                {data.genres.map((item) => <Genre>{item}</Genre>)}
+                            </RowGenres>
+                            <RowAddCart onSubmit={addCart}>
+                                <LabelPrice>{data.price}</LabelPrice>
+                                <FieldAddCart type='number' placeholder='Qtde.' min={0} max={data.stock} 
+                                value={qtde} onChange={(e) => { setQtde(e.target.value) }} required />
+                                <FieldAddCart type='submit' value='Selecionar' />
+                            </RowAddCart>
+                        </ContainerGameData>
+                        <Link to='/'>
+                            <Paragraph><ion-icon name="arrow-undo"></ion-icon> Voltar</Paragraph>
+                        </Link>
+                    </Fragment>}
+                </Container>
             <Footer />
         </Fragment>
     );

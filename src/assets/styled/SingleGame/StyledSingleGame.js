@@ -17,6 +17,7 @@ export const ContainerGameData = styled.div`
     box-sizing: border-box;
     width: 100%;
     padding: 10px 0px 10px 0px;
+    font-family: 'Raleway', sans-serif;
 `;
 
 export const RowGameName = styled.p`

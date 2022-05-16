@@ -31,7 +31,9 @@ export default function Footer(){
     return (
         <FooterPage>
             <FooterIcons><ion-icon name="bag-outline"></ion-icon></FooterIcons>
-            <FooterIcons><ion-icon name="cart-outline"></ion-icon></FooterIcons>
+            <Link to='/cart'>
+                <FooterIcons><ion-icon name="cart-outline"></ion-icon></FooterIcons>
+            </Link>
             {!logged && <Link to='/login'><FooterIcons><ion-icon name="enter-outline"></ion-icon></FooterIcons></Link> }
             {logged && <FooterIcons><ion-icon name="exit-outline" onClick={logout}></ion-icon></FooterIcons>}
         </FooterPage>
