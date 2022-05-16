@@ -36,8 +36,8 @@ export const ContainerGames = styled.div`
 
 export const SingleGame = styled.div`
     box-sizing: border-box;
-    width: 170px;
-    height: 250px;
+    width: 150px;
+    height: 270px;
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
@@ -92,4 +92,15 @@ export const FooterIcons = styled.p`
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+`;
+
+export const Paragraph = styled.p`
+    box-sizing: border-box;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    font-size: 19px;
+    cursor: auto;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    ${({type}) => type === 'back' ? 'underline;' : 'none;' }
 `;

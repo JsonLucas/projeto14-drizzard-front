@@ -1,14 +1,9 @@
 import { useEffect, Fragment, useState } from "react";
+import { ContainerGames, Paragraph} from "../../assets/styled/ListGames/StyledListGames";
 import { Link, useParams } from "react-router-dom";
-import { 
-    ContainerGames, 
-    GameThumbnail, 
-    Img, 
-    SingleGame, 
-    RowGameData, 
-    GameData } from "../../assets/styled/ListGames/StyledListGames";
 import Footer from "../Footer";
 import Header from "../Header";
+import SingleGameArea from "../SingleGameArea";
 
 export default function ResultSearch() {
     const { query } = useParams();
@@ -27,22 +22,14 @@ export default function ResultSearch() {
         <Fragment>
             <Header />
             <ContainerGames>
-                {numResults === 0 && <p>Não foram encontrado resultados para "{query}"</p>}
+                <Link to='/'>
+                    <Paragraph><ion-icon name="arrow-undo"></ion-icon> Voltar</Paragraph>
+                </Link>
+                {numResults === 0 && <Paragraph>Não foram encontrado resultados para "{query}"</Paragraph>}
                 {numResults > 0 &&
                     <Fragment>
-                        {queryResults.map((item) =>
-                            <Link key={item.name} to={`/game/${item._id}`}>
-                                <SingleGame>
-                                    <GameThumbnail>
-                                        <Img src={item.image} />
-                                    </GameThumbnail>
-                                    <RowGameData>
-                                        <GameData type='name'>{item.name}</GameData>
-                                        <GameData type='price'>{item.price}</GameData>
-                                    </RowGameData>
-                                </SingleGame>
-                            </Link>
-                        )}
+                        <Paragraph>Foram encontrados {numResults} resultados para "{query}"</Paragraph>
+                        <SingleGameArea results={queryResults} />
                     </Fragment>}
             </ContainerGames>
             <Footer />

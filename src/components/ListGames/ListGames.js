@@ -1,15 +1,9 @@
+import { ContainerGames, Paragraph } from "../../assets/styled/ListGames/StyledListGames";
 import { useEffect, Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { 
-    ContainerGames, 
-    GameThumbnail, 
-    Img, 
-    SingleGame, 
-    RowGameData, 
-    GameData } from "../../assets/styled/ListGames/StyledListGames";
 import getGames from "../../utils/listGamesRequest";
 import Footer from "../Footer";
 import Header from "../Header";
+import SingleGameArea from "../SingleGameArea";
 
 export default function ListGames() {
     const [games, setGames] = useState([]);
@@ -30,23 +24,8 @@ export default function ListGames() {
         <Fragment>
             <Header />
             <ContainerGames>
-                {!loaded && <></>}
-                {loaded &&
-                    <Fragment>
-                        {games.map((item) =>
-                            <Link key={item.name} to={`/game/${item._id}`}>
-                                <SingleGame>
-                                    <GameThumbnail>
-                                        <Img src={item.image} />
-                                    </GameThumbnail>
-                                    <RowGameData>
-                                        <GameData type='name'>{item.name}</GameData>
-                                        <GameData type='price'>{item.price}</GameData>
-                                    </RowGameData>
-                                </SingleGame>
-                            </Link>
-                        )}
-                    </Fragment>}
+                {!loaded && <Paragraph>Carregando. . .</Paragraph>}
+                {loaded && <SingleGameArea results={games} /> }
             </ContainerGames>
             <Footer />
         </Fragment>
