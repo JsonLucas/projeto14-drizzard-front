@@ -28,7 +28,7 @@ export const SearchField = styled.input`
 
 export const ContainerGames = styled.div`
     box-sizing: border-box;
-    width: 90%;
+    width: 95%;
     height: auto;
     margin: auto;
     padding: 10px;
