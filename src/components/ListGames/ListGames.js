@@ -1,6 +1,15 @@
 import { useEffect, Fragment, useState } from "react";
-import { ContainerGames, GameThumbnail, Header, Img, RowSearch, SearchField, SingleGame, RowGameData, GameData, FooterPage, FooterIcons } from "../../assets/styled/ListGames/StyledListGames";
+import { Link } from "react-router-dom";
+import { 
+    ContainerGames, 
+    GameThumbnail, 
+    Img, 
+    SingleGame, 
+    RowGameData, 
+    GameData } from "../../assets/styled/ListGames/StyledListGames";
 import getGames from "../../utils/listGamesRequest";
+import Footer from "../Footer";
+import Header from "../Header";
 
 export default function ListGames() {
     const [games, setGames] = useState([]);
@@ -19,34 +28,27 @@ export default function ListGames() {
     }, []);
     return (
         <Fragment>
-            <Header>
-                <RowSearch>
-                    <SearchField type='text' placeholder='Pesquisar' />
-                </RowSearch>
-            </Header>
+            <Header />
             <ContainerGames>
                 {!loaded && <></>}
                 {loaded &&
                     <Fragment>
                         {games.map((item) =>
-                            <SingleGame key={item.image}>
-                                <GameThumbnail>
-                                    <Img src={item.image} />
-                                </GameThumbnail>
-                                <RowGameData>
-                                    <GameData type='name'>{item.name}</GameData>
-                                    <GameData type='price'>{item.price}</GameData>
-                                </RowGameData>
-                            </SingleGame>
+                            <Link key={item.name} to={`/game/${item._id}`}>
+                                <SingleGame>
+                                    <GameThumbnail>
+                                        <Img src={item.image} />
+                                    </GameThumbnail>
+                                    <RowGameData>
+                                        <GameData type='name'>{item.name}</GameData>
+                                        <GameData type='price'>{item.price}</GameData>
+                                    </RowGameData>
+                                </SingleGame>
+                            </Link>
                         )}
                     </Fragment>}
             </ContainerGames>
-            <FooterPage>
-                <FooterIcons><ion-icon name="bag-outline"></ion-icon></FooterIcons>
-                <FooterIcons><ion-icon name="cart-outline"></ion-icon></FooterIcons>
-                <FooterIcons><ion-icon name="enter-outline"></ion-icon></FooterIcons>
-                {/*<ion-icon name="exit-outline"></ion-icon>*/}
-            </FooterPage>
+            <Footer />
         </Fragment>
     );
 }
