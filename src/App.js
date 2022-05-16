@@ -7,6 +7,7 @@ import UserContext from "./contexts/UserContext";
 import Login from "./components/Login/Login";
 import Checkout from "./components/Checkout/Checkout";
 import SignUp from "./components/SignUp/SignUp";
+import Cart from "./components/shoppingCart/Cart";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
@@ -24,7 +25,7 @@ function App() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/home" element={<></>}/>  
-                <Route path="" element={<></>}/>
+                <Route path="/cart" element={<Cart/>}/>
             </Routes>
         </BrowserRouter>
       </UserContext.Provider>
