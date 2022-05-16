@@ -16,7 +16,7 @@ export default function Cart(){
         <StyledCart>
             {selectedGames.length>=1?
             <StyledList>
-                {selectedGames.map(game=><CartGame image={game.cartData.image} name={game.cartData.name} price={game.cartData.price}/>)}
+                {selectedGames.map(game=><CartGame image={game.cartData.image} name={game.cartData.name} price={game.cartData.price} qtde={game.cartData.qtde}/>)}
             </StyledList>
             :<h2>Seu carrinho de compras está vazio</h2>}
         </StyledCart>
