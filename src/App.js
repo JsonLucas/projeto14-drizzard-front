@@ -8,10 +8,11 @@ import Login from "./components/Login/Login";
 import Checkout from "./components/Checkout/Checkout";
 import SignUp from "./components/SignUp/SignUp";
 import ListGames from "./components/ListGames/ListGames";
+import SingleGamePage from "./components/SingleGamePage/SingleGamePage";
+import ResultSearch from "./components/ResultSearch/ResultSearch";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
-import SingleGamePage from "./components/SingleGamePage/SingleGamePage";
 
 function App() {
   const [loading,setLoading] = useState(false);
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/signup" element={<SignUp/>}/>
                 <Route path="/login" element={<Login/>}/>  
                 <Route path="/checkout" element={<Checkout/>}/>
+                <Route path='/result/:query' element={<ResultSearch />} />
                 <Route path="" element={<></>}/>
             </Routes>
         </BrowserRouter>
