@@ -9,7 +9,7 @@ import calcTotal from '../../utils/cartOperation.js';
 export default function Cart(){
     const navigate = useNavigate()
     const selectedGames = JSON.parse(localStorage.getItem('cartData'));
-
+    const orderPrice = calcTotal(selectedGames)
     return(
         <>
         <Topo/>
@@ -23,7 +23,7 @@ export default function Cart(){
         <CartButton>
                 <div className='totalPrice'>
                     <h2>Total:</h2>
-                    <h2>{calcTotal(selectedGames)}</h2>
+                    <h2>{orderPrice}</h2>
                 </div>
                 <button className='proceed' onClick={()=>navigate('/checkout')}>
                         Continuar compra

@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 import Topo from '../Topo.js';
 import LoadingContext from '../../contexts/LoadingContext.js';
+import calcTotal from '../../utils/cartOperation.js';
+import cartRequest from '../../utils/cartRequest.js';
+import { useNavigate } from 'react-router-dom';
 
 export default function Checkout(){
     const { loading, setLoading } = useContext(LoadingContext);
@@ -21,6 +24,8 @@ export default function Checkout(){
     const[uf,setUf] = useState('');
     const[complemento,setComplemento] = useState('');
     const[numeroRua,setNumeroRua] = useState('');
+
+    const navigate = useNavigate()
 
     function requestCep(event){
         event.preventDefault();
@@ -49,8 +54,12 @@ export default function Checkout(){
         });
     };
 
-    function requestOrder(event){
+    async function requestOrder(event){
         event.preventDefault();
+        const token = {
+            headers: { token: JSON.parse(localStorage.getItem('loginSession'))}
+            };
+        const pedido = JSON.parse(localStorage.getItem('cartData'));
         const localEnvio={
             endereco: `${endereco}, ${numeroRua}`,
             cidade: `${localidade}, ${uf}`,
@@ -61,12 +70,22 @@ export default function Checkout(){
             codSeg,
             nome,
             validade,
+            valor: calcTotal(pedido)
         }
-        if(!endereco || !localidade|| !uf || !cartao || !codSeg || !nome || !validade){
+        
+        if(!endereco || !localidade|| !uf || !cartao || !codSeg || !nome || !validade || !numeroRua){
             alert("preencha todos os campos");
         }else{
-            console.log(localEnvio,dadosPagamento)    
-        }
+            try {
+                const request = await cartRequest({pedido,localEnvio,dadosPagamento},token);
+                console.log({pedido,localEnvio,dadosPagamento},token)
+                alert('pedido enviado')
+                navigate('/')
+            } catch (error) {
+                alert('pedido nao foi enviado')
+                console.log(error);
+            };
+        };
     }
 
     return(
