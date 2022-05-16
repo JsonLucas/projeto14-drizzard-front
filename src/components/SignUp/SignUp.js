@@ -64,7 +64,7 @@ export default function SignUp(){
                         setPassword(e.target.value);
                     }} disabled={disabled} />
                     <Fields value={confirmPass} type="password" placeholder='Confirmar senha' required 
-                    onChange={(e) => { setConfirmPass(e.target.value); }} />
+                    onChange={(e) => { setConfirmPass(e.target.value); }} disabled={disabled} />
                     <Fields isButton={true} type="submit" value='Cadastrar' />
                 </MainForm> 
                 <Link to={`/`}>

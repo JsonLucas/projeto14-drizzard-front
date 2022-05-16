@@ -8,7 +8,7 @@ export const HeaderPage = styled.header`
     background-color: rgb(11, 13, 18);
 `;
 
-export const RowSearch = styled.div`
+export const RowSearch = styled.form`
     box-sizing: border-box;
     min-width: 200px;
     max-width: 500px;
