@@ -14,6 +14,7 @@ export default function SignUp(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
+    const [disabled, setDisabled] = useState(false);
     const navigate = useNavigate();
     async function signUp(e){
         e.preventDefault(); 
@@ -24,6 +25,7 @@ export default function SignUp(){
                 password
             };
             try{
+                setDisabled(true);
                 const response = await signUpRequest(body);
                 if(response.status < 400){
                     alert('cadastro efetuado com sucesso!');
@@ -38,6 +40,7 @@ export default function SignUp(){
             }catch(e){
                 console.log(e.message);
             }
+            setDisabled(false);
             setName('');
             setEmail('');
             setPassword('');
@@ -53,15 +56,15 @@ export default function SignUp(){
                 <MainForm className='main-form' onSubmit={signUp}>
                     <Fields value={name} type='text' placeholder='Nome' required onChange={(e) => {
                         setName(e.target.value);
-                    }} />
+                    }} disabled={disabled} />
                     <Fields value={email} type="email" placeholder='Email' required onChange={(e) => {
                         setEmail(e.target.value);
-                    }} />
+                    }} disabled={disabled} />
                     <Fields value={password} type="password" placeholder='Senha' required onChange={(e) => {
                         setPassword(e.target.value);
-                    }} />
+                    }} disabled={disabled} />
                     <Fields value={confirmPass} type="password" placeholder='Confirmar senha' required 
-                    onChange={(e) => { setConfirmPass(e.target.value); }} />
+                    onChange={(e) => { setConfirmPass(e.target.value); }} disabled={disabled} />
                     <Fields isButton={true} type="submit" value='Cadastrar' />
                 </MainForm> 
                 <Link to={`/`}>

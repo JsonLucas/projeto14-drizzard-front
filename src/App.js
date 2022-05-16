@@ -10,6 +10,7 @@ import SignUp from "./components/SignUp/SignUp";
 import Cart from "./components/shoppingCart/Cart";
 import ListGames from "./components/ListGames/ListGames";
 import SingleGamePage from "./components/SingleGamePage/SingleGamePage";
+import ResultSearch from "./components/ResultSearch/ResultSearch";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
@@ -29,7 +30,7 @@ function App() {
                 <Route path="/login" element={<Login/>}/>  
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/cart" element={<Cart/>}/>
-                <Route path="" element={<></>}/>
+                <Route path='/result/:query' element={<ResultSearch />} />
             </Routes>
         </BrowserRouter>
       </UserContext.Provider>
