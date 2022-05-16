@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import Checkout from "./components/Checkout/Checkout";
 import SignUp from "./components/SignUp/SignUp";
 import Cart from "./components/shoppingCart/Cart";
+import ListGames from "./components/ListGames/ListGames";
 
 import "./assets/css/reset.css";
 import "./assets/css/fonts.css";
@@ -21,11 +22,12 @@ function App() {
       <UserContext.Provider value={{user, setUser}}>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login/>}/>
+                <Route path="/" element={<ListGames />}/>
                 <Route path="/signup" element={<SignUp/>}/>
+                <Route path="/login" element={<Login/>}/>  
                 <Route path="/checkout" element={<Checkout/>}/>
-                <Route path="/home" element={<></>}/>  
                 <Route path="/cart" element={<Cart/>}/>
+                <Route path="" element={<></>}/>
             </Routes>
         </BrowserRouter>
       </UserContext.Provider>
