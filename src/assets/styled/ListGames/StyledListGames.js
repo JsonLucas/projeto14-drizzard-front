@@ -93,3 +93,14 @@ export const FooterIcons = styled.p`
     font-weight: bold;
     cursor: pointer;
 `;
+
+export const Paragraph = styled.p`
+    box-sizing: border-box;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    font-size: 19px;
+    cursor: auto;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    ${({type}) => type === 'back' ? 'underline;' : 'none;' }
+`;
