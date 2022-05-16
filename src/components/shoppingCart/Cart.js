@@ -14,7 +14,7 @@ export default function Cart(){
         <>
         <Topo/>
         <StyledCart>
-            {selectedGames?
+            {selectedGames.length>=1?
             <StyledList>
                 {selectedGames.map(game=><CartGame image={game.cartData.image} name={game.cartData.name} price={game.cartData.price}/>)}
             </StyledList>
